@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 
 import NMSurvivalGames.Arena.Arena;
@@ -89,6 +90,20 @@ public class Write {
 			bw.write("[REPEAT COMMANDS]\r\n");
 			bw.write("[END]\r\n\r\n");
 			
+			bw.write("[START LOCATIONS]\r\n");
+			for(Location loc : getA().getSML().getLocations()) {
+				System.out.println(loc.getWorld().getName() + " : " + loc.getX() + " : " + loc.getY() + " : " + loc.getZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch());
+				bw.write(loc.getWorld().getName() + " : " + loc.getX() + " : " + loc.getY() + " : " + loc.getZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch() +"\t\n");
+			}
+			bw.write("[END]\r\n\r\n");
+			
+			bw.write("[DEATHMATCH LOCATIONS]\r\n");
+			for(Location loc : getA().getDML().getLocations()) {
+				System.out.println(loc.getWorld().getName() + " : " + loc.getX() + " : " + loc.getY() + " : " + loc.getZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch());
+				bw.write(loc.getWorld().getName() + " : " + loc.getX() + " : " + loc.getY() + " : " + loc.getZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch() +"\t\n");
+			}
+			bw.write("[END]\r\n\r\n");
+			
 			bw.close();
 			fw.close();
 		} catch (IOException ex) {
@@ -129,6 +144,9 @@ public class Write {
 			bw.write("[END]\r\n\r\n");
 			
 			bw.write("[START LOCATIONS]\r\n");
+			bw.write("[END]\r\n\r\n");
+			
+			bw.write("[DEATHMATCH LOCATIONS]\r\n");
 			bw.write("[END]\r\n\r\n");
 
 			bw.close();

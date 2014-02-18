@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 
 import NMSurvivalGames.Arena.Arena;
@@ -17,7 +19,7 @@ public class Read {
 	public Read(Arena a) {
 		setA(a);
 	}
-	
+
 	public void read() {
 		try {
 			File file = new File(getA().getWorld().getName() + "/NMSurvivalGames.settings");
@@ -25,7 +27,7 @@ public class Read {
 			if(file.exists()) {
 				FileReader fr = new FileReader(file);
 				BufferedReader br = new BufferedReader(fr);	
-	
+
 				String currentLine;
 				while((currentLine = br.readLine()) != null) {
 					if(currentLine.equalsIgnoreCase("[ARENA SETTINGS]")) {
@@ -42,7 +44,7 @@ public class Read {
 									} else if(line[0].equalsIgnoreCase("MAX SPECTATORS")) {
 										getA().getPh().setMaxSpectators(Integer.parseInt(line[1]));
 									} else {
-										
+
 									}
 								}
 							}
@@ -101,7 +103,31 @@ public class Read {
 								getA().getEC().addCommand(Integer.parseInt(line[0]), line[1]);
 							}
 						}
-					} 
+					} else if(currentLine.equalsIgnoreCase("[REPEAT COMMANDS]")) {
+
+					} else if(currentLine.equalsIgnoreCase("[START LOCATIONS]")) {
+						while((currentLine = br.readLine()) != null && !currentLine.contains("[END]")) {
+							if(currentLine.contains(" : ")) {
+								String[] line = currentLine.split(" : ");
+								if(line.length == 6) {
+									Location loc = new Location(Bukkit.getWorld(line[0]), Integer.parseInt(line[1]), Integer.parseInt(line[2]), Integer.parseInt(line[3]), Float.parseFloat(line[4]), Float.parseFloat(line[5]));
+									getA().getSML().addLocation(loc);
+								}
+							}
+						}
+					} else if(currentLine.equalsIgnoreCase("[DEATHMATCH LOCATIONS]")) {
+						while((currentLine = br.readLine()) != null && !currentLine.contains("[END]")) {
+							if(currentLine.contains(" : ")) {
+								String[] line = currentLine.split(" : ");
+								if(line.length == 6) {
+									Location loc = new Location(Bukkit.getWorld(line[0]), Integer.parseInt(line[1]), Integer.parseInt(line[2]), Integer.parseInt(line[3]), Float.parseFloat(line[4]), Float.parseFloat(line[5]));
+									getA().getSML().addLocation(loc);
+								}
+							}
+						}
+					} else {
+
+					}
 				}
 
 				br.close();
