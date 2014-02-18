@@ -1,6 +1,5 @@
 package NMSurvivalGames.ArenaContainer.Commands;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 import org.bukkit.ChatColor;
@@ -48,7 +47,7 @@ public class ArenaCE implements CommandExecutor {
 											return false;
 										}
 									} else if(args[2].equalsIgnoreCase("list")) {
-										ArrayList<Location> locations = a.getSML().getLocations();
+										HashSet<Location> locations = a.getSML().getLocations();
 										if(locations.size() != 0) {
 											player.sendMessage(ChatColor.GOLD + "Locations for " + w.getName());
 											for(Location loc : a.getSML().getLocations()) {
@@ -86,7 +85,7 @@ public class ArenaCE implements CommandExecutor {
 											return false;
 										}
 									} else if(args[2].equalsIgnoreCase("list")) {
-										ArrayList<Location> locations = a.getDML().getLocations();
+										HashSet<Location> locations = a.getDML().getLocations();
 										if(locations.size() != 0) {
 											player.sendMessage(ChatColor.GOLD + "Locations for " + w.getName());
 											for(Location loc : a.getSML().getLocations()) {

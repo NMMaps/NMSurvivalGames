@@ -13,16 +13,16 @@ public class Locations {
 	
 	private Arena a;
 	
-	private ArrayList<Location> locations = new ArrayList<Location>();
+	private HashSet<Location> locations = new HashSet<Location>();
 	
 	public Locations(Arena a) {
 		setA(a);
 	}
 	
 	public boolean addLocation(Location loc) {
-		loc.setX(((int) loc.getX()) + .5);
+		loc.setX(((int) loc.getX()));
 		loc.setY(((int) loc.getY()));
-		loc.setZ(((int) loc.getZ()) + .5);
+		loc.setZ(((int) loc.getZ()));
 		if(!locations.contains(loc)) {
 			synchronized (locations) {
 				locations.add(loc);
@@ -34,9 +34,9 @@ public class Locations {
 	}
 	
 	public boolean removeLocation(Location loc) {
-		loc.setX(((int) loc.getX()) + .5);
+		loc.setX(((int) loc.getX()));
 		loc.setY(((int) loc.getY()));
-		loc.setZ(((int) loc.getZ()) + .5);
+		loc.setZ(((int) loc.getZ()));
 		if(locations.contains(loc)) {
 			synchronized (locations) {
 				locations.remove(loc);
@@ -64,7 +64,7 @@ public class Locations {
 					Iterator<String> i = hashSet.iterator();
 					int index = 0;
 					while(i.hasNext()) {
-						Bukkit.getPlayerExact(i.next()).teleport(templist.get(index));
+						Bukkit.getPlayerExact(i.next()).teleport(templist.get(index).add(.5,0,.5));
 						index++;
 					}
 					Bukkit.getLogger().info("Players in alive were all teleported");
@@ -78,7 +78,7 @@ public class Locations {
 		}
 	}
 	
-	public ArrayList<Location> getLocations() {
+	public HashSet<Location> getLocations() {
 		return locations;
 	}
 
