@@ -1,0 +1,120 @@
+name: NMSurvivalGames
+author: NMMaps, acourse, Mitchell Stehula
+version: 0.0.01_01
+description: Survival Games Plugin developed by NMMaps
+main: NMSurvivalGames.NMSurvivalGames
+
+commands:
+  arenacontainer:
+    description: Houses all commands for manipulating the arena container, sub commands include enable, disable and lock.
+    aliases: ac
+  arena:
+    description: Houses all commands for manipulating arenas, sub commands include locations, commands, chests, and world editing
+    aliases: a
+  internal:
+    description: for use in controlling the server from server console and command blocks.
+    aliases: i
+
+permissions:
+  NMSurvivalGames.*:
+    description: Gives access to all commands in the NMSurvivalGames plugin
+    default: op
+    children:
+      NMSurvivalGames.Arena.*: true
+      NMSurvivalGames.ArenaContainer.*: true
+      
+  NMSurvivalGames.Arena.*:
+    description: Gives access to all commands about changing the arena
+    default: op
+    children:
+      NMSurvivalGames.Arena.Locations.*: true
+      NMSurvivalGames.Arena.Commands.*: true
+      NMSurvivalGames.Arena.Chests.*: true
+      NMSurvivalGames.Arena.World.*: true
+      NMSurvivalGames.Arena.File.*: true
+      
+  NMSurvivalGames.Arena.Locations.*:
+    description: Gives access to all commands changing, editing, removing and teleporting to locations
+    default: op
+    children:
+      NMSurvivalGames.Arena.Locations.add: true
+      NMSurvivalGames.Arena.Locations.list: true
+      NMSurvivalGames.Arena.Locations.remove: true
+      NMSurvivalGames.Arena.Locations.teleport: true
+    NMSurvivalGames.Locations.add:
+      default: false
+    NMSurvivalGames.Locations.list:
+      default: false
+    NMSurvivalGames.Locations.remove:
+      default: false
+    NMSurvivalGames.Locations.teleport:
+      default: false
+      
+  NMSurvivalGames.Arena.Commands.*:
+    description: Gives access to all commands adding, viewing, removing and calling commands
+    default: op
+    children:
+      NMSurvivalGames.Arena.Commands.add: true
+      NMSurvivalGames.Arena.Commands.list: true
+      NMSurvivalGames.Arena.Commands.remove: true
+      NMSurvivalGames.Arena.Commands.run: true
+    NMSurvivalGames.Commands.add:
+      default: false
+    NMSurvivalGames.Commands.list:
+      default: false
+    NMSurvivalGames.Commands.remove:
+      default: false
+    NMSurvivalGames.Commands.run:
+      default: false
+      
+  NMSurvivalGames.Arena.Chests.*:
+    description: Gives access to all commands adding, listing, removing, filling and emptying chests
+    default: op
+    children:
+      NMSurvivalGames.Arena.Chests.add: true
+      NMSurvivalGames.Arena.Chests.list: true
+      NMSurvivalGames.Arena.Chests.remove: true
+      NMSurvivalGames.Arena.Chests.fill: true
+      NMSurvivalGames.Arena.Chests.empty: true
+    NMSurvivalGames.Chests.add:
+      default: false
+    NMSurvivalGames.Chests.list:
+      default: false
+    NMSurvivalGames.Chests.remove:
+      default: false
+    NMSurvivalGames.Chests.fill:
+      default: false
+    NMSurvivalGames.Chests.empty:
+      default: false
+      
+  NMSurvivalGames.Arena.World.*:
+    description: Gives access to all commands controlling the world
+    default: op
+    
+  NMSurvivalGames.Arena.File.*:
+    description: Gives access to save and load from the command line
+    default: op
+    children:
+      NMSurvivalGames.Arena.File.save: true
+      NMSurvivalGames.Arena.File.load: true    
+    NMSurvivalGames.Arena.File.save:
+      default: false
+    NMSurvivalGames.Arena.File.load:
+      default: false
+      
+  NMSurvivalGames.ArenaContainer.*:  
+    description: Gives access to all commands about the handling of arenas
+    default: op
+    children:
+      NMSurvivalGames.ArenaContainer.enable: true
+      NMSurvivalGames.ArenaContainer.disable: true
+      NMSurvivalGames.ArenaContainer.list: true
+      NMSurvivalGames.ArenaContainer.lock: true
+    NMSurvivalGames.ArenaContainer.enable:
+      default: false
+    NMSurvivalGames.ArenaContainer.disable:
+      default: false
+    NMSurvivalGames.ArenaContainer.list:
+      default: false
+    NMSurvivalGames.ArenaContainer.lock:
+      default: false
