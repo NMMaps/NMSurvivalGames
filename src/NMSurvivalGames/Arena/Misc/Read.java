@@ -110,8 +110,13 @@ public class Read {
 							if(currentLine.contains(" : ")) {
 								String[] line = currentLine.split(" : ");
 								if(line.length == 6) {
-									Location loc = new Location(Bukkit.getWorld(line[0]), Integer.parseInt(line[1]), Integer.parseInt(line[2]), Integer.parseInt(line[3]), Float.parseFloat(line[4]), Float.parseFloat(line[5]));
-									getA().getSML().addLocation(loc);
+									if(line[0].equalsIgnoreCase("@w")) {
+										Location loc = new Location(getA().getWorld(), Integer.parseInt(line[1]), Integer.parseInt(line[2]), Integer.parseInt(line[3]), Float.parseFloat(line[4]), Float.parseFloat(line[5]));
+										getA().getSML().addLocation(loc);
+									} else {
+										Location loc = new Location(Bukkit.getWorld(line[0]), Integer.parseInt(line[1]), Integer.parseInt(line[2]), Integer.parseInt(line[3]), Float.parseFloat(line[4]), Float.parseFloat(line[5]));	
+										getA().getSML().addLocation(loc);
+									}
 								}
 							}
 						}
@@ -143,6 +148,10 @@ public class Read {
 		}
 	}
 
+	public boolean parseBoolean(String str) {
+		return Boolean.parseBoolean(str);
+	}
+	
 	public Arena getA() {
 		return a;
 	}
