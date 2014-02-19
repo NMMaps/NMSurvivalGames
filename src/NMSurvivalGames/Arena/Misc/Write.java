@@ -92,12 +92,14 @@ public class Write {
 			
 			bw.write("[START LOCATIONS]\r\n");
 			for(Location loc : getA().getSML().getLocations()) {
+				System.out.println(loc.getWorld().getName() + " : " + loc.getBlockX() + " : " + loc.getBlockY() + " : " + loc.getBlockZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch());
 				bw.write("@w" + " : " + loc.getBlockX() + " : " + loc.getBlockY() + " : " + loc.getBlockZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch() +"\r\n");
 			}
 			bw.write("[END]\r\n\r\n");
 			
 			bw.write("[DEATHMATCH LOCATIONS]\r\n");
 			for(Location loc : getA().getDML().getLocations()) {
+				System.out.println(loc.getWorld().getName() + " : " + loc.getBlockX() + " : " + loc.getBlockY() + " : " + loc.getBlockZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch());
 				bw.write("@w" + " : " + loc.getBlockX() + " : " + loc.getBlockY() + " : " + loc.getBlockZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch() +"\r\n");
 			}
 			bw.write("[END]\r\n\r\n");
