@@ -52,7 +52,6 @@ public class Read {
 					} else if(currentLine.equalsIgnoreCase("[ARENA CHESTS]")) {
 						HashMap<Material, Integer> map = getA().getCh().getItemMap();
 						while((currentLine = br.readLine()) != null && !currentLine.contains("[END]")) {
-							System.out.println(currentLine);
 							String[] line = currentLine.split(": ");
 							if(line.length == 2) {
 								Material mat = Material.getMaterial(line[0].toUpperCase());
