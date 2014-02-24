@@ -64,7 +64,7 @@ public class Locations {
 					Iterator<String> i = hashSet.iterator();
 					int index = 0;
 					while(i.hasNext()) {
-						Bukkit.getPlayerExact(i.next()).teleport(templist.get(index).add(.5,0,.5));
+						Bukkit.getPlayerExact(i.next()).teleport(new Location(templist.get(index).getWorld(), templist.get(index).getBlockX() - .5, templist.get(index).getBlockY(), templist.get(index).getBlockZ() + .5));
 						index++;
 					}
 					Bukkit.getLogger().info("Players in alive were all teleported");

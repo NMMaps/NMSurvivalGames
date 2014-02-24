@@ -47,6 +47,7 @@ public class ArenaContainerCE implements CommandExecutor {
 						if((w = getAc().addWorldFromFile(world)) != null) {
 							Arena a = getAc().addArena(w);
 							a.EnableArena();
+							sender.sendMessage(ChatColor.GOLD + "Arena created and enabled on world " + w.getName());
 							return true;
 						} else {
 							sender.sendMessage(ChatColor.RED + "This world could not be added, we cannot find it in the world registry. Is it in the correct file folder?");

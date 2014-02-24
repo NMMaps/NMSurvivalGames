@@ -105,10 +105,12 @@ public class Read {
 					} else if(currentLine.equalsIgnoreCase("[REPEAT COMMANDS]")) {
 
 					} else if(currentLine.equalsIgnoreCase("[START LOCATIONS]")) {
+						getA().getSML().getLocations().clear();
 						while((currentLine = br.readLine()) != null && !currentLine.contains("[END]")) {
 							if(currentLine.contains(" : ")) {
 								String[] line = currentLine.split(" : ");
 								if(line.length == 6) {
+									System.out.println(currentLine);
 									if(line[0].equalsIgnoreCase("@w")) {
 										Location loc = new Location(getA().getWorld(), Integer.parseInt(line[1]), Integer.parseInt(line[2]), Integer.parseInt(line[3]), Float.parseFloat(line[4]), Float.parseFloat(line[5]));
 										getA().getSML().addLocation(loc);
@@ -120,6 +122,7 @@ public class Read {
 							}
 						}
 					} else if(currentLine.equalsIgnoreCase("[DEATHMATCH LOCATIONS]")) {
+						getA().getDML().getLocations().clear();
 						while((currentLine = br.readLine()) != null && !currentLine.contains("[END]")) {
 							if(currentLine.contains(" : ")) {
 								String[] line = currentLine.split(" : ");

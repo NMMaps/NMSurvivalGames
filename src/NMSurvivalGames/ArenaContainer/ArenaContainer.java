@@ -70,12 +70,14 @@ public class ArenaContainer {
 
 	public Arena addArena(World w) {
 		Arena a = new Arena(w, this);
+		a.EnableArena();
 		enabled.put(w.getName(), true);
 		arenas.add(a);
 		return a;
 	}
 
 	public void disableArena(Arena a) {
+		a.DisableArena();
 		enabled.put(a.getWorld().getName(), false);
 		arenas.remove(a);
 	}
@@ -93,6 +95,7 @@ public class ArenaContainer {
 		File container = Bukkit.getWorldContainer();
 		for(String file : container.list()) {
 			if(name.equalsIgnoreCase(file)) {
+				System.out.println("I found a file!");
 				World w = Bukkit.createWorld(new WorldCreator(file));
 				return w;
 			}

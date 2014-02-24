@@ -78,7 +78,7 @@ public class Arena {
 		setWh(new WorldHandler(this));
 		setPh(new PlayerHandler(this));
 
-		/* Read settings */
+		/* Read settings from file*/
 		getR().read();
 
 		getWh().setWorldAttribs();
@@ -91,7 +91,6 @@ public class Arena {
 
 	public void DisableArena() {
 		getW().write();
-		getAc().disableArena(this);
 	}
 
 	public void shutdown() {

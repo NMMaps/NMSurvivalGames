@@ -2,6 +2,7 @@ package NMSurvivalGames.ArenaContainer.Commands;
 
 import java.util.HashSet;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -761,6 +762,54 @@ public class ArenaCE implements CommandExecutor {
 							}
 						} else {
 							player.sendMessage(ChatColor.RED + "Invalid Syntax, use /" + cmd.getName() + " file <save:load:defaults>");
+							return false;
+						}
+					} else if (args[0].equalsIgnoreCase("admin")) {
+						if(args.length > 1) {
+							if(args[1].equalsIgnoreCase("add")) {
+								if(args.length == 2) {
+									a.getPh().addAdmin(player);
+									player.sendMessage(ChatColor.GOLD + "Added you to arena " + a.getName() + " as admin");
+									return true;
+								} else if(args.length == 3) {
+									Player addition = Bukkit.getPlayerExact(args[2]);
+									if(addition != null) {
+										a.getPh().addAdmin(addition);
+										player.sendMessage(ChatColor.GOLD + "Added " + addition.getName() + " to arena " + a.getName() + " as admin");
+										return true;
+									} else {
+										player.sendMessage(ChatColor.RED + "That player is not online");
+										return false;
+									}
+								} else {
+									player.sendMessage(ChatColor.RED + "Invalid Syntax, use /" + cmd.getName() + " admin add [player]");
+									return false;
+								}
+							} else if(args[1].equalsIgnoreCase("remove")) {
+								if(args.length == 2) {
+									a.getPh().addDead(player);
+									player.sendMessage(ChatColor.GOLD + "Added you to arena " + a.getName() + " as dead player");
+									return true;
+								} else if(args.length == 3) {
+									Player addition = Bukkit.getPlayerExact(args[2]);
+									if(addition != null) {
+										a.getPh().addAdmin(addition);
+										player.sendMessage(ChatColor.GOLD + "Added " + addition.getName() + " to arena " + a.getName() + " as dead player");
+										return true;
+									} else {
+										player.sendMessage(ChatColor.RED + "That player is not online");
+										return false;
+									}
+								} else {
+									player.sendMessage(ChatColor.RED + "Invalid Syntax, use /" + cmd.getName() + " admin remove [player]");
+									return false;
+								}
+							} else {
+								player.sendMessage(ChatColor.RED + "Invalid Syntax, use /" + cmd.getName() + " admin <add:remove>");
+								return false;
+							}
+						} else {
+							player.sendMessage(ChatColor.RED + "Invalid Syntax, use /" + cmd.getName() + " admin <add:remove>");
 							return false;
 						}
 					} else {

@@ -92,6 +92,7 @@ public class Write {
 			
 			bw.write("[START LOCATIONS]\r\n");
 			for(Location loc : getA().getSML().getLocations()) {
+				System.out.println("Writing location");
 				bw.write("@w" + " : " + loc.getBlockX() + " : " + loc.getBlockY() + " : " + loc.getBlockZ() + " : " + (int) loc.getYaw() + " : " + (int) loc.getPitch() +"\r\n");
 			}
 			bw.write("[END]\r\n\r\n");
